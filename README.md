@@ -7,8 +7,8 @@
 ## 🧠 Table of Contents
 - [📌 Introduction](#-introduction)
 - [📚 create database](#-create-database)
-- [💻 Code Examples](#-code-examples)
-- [📎 Cheat Sheet](#-cheat-sheet)
+- [💻CREATE TABLE anf INSERT VALUES(#-code-examples)
+- [📎 ALTER (#-cheat-sheet)
 - [🔗 Resources](#-resources)
 - [✅ To-Do List](#-to-do-list)
 
@@ -58,3 +58,33 @@ create table department(
 
 select * from department; //see department table 
 ```
+insert values into a table
+```
+insert into department values(1,"CSE',15,450);
+```
+if any field we want to keep null it can be rewrite as 
+```insert into department values(1,'cse','','');```
+
+most used constrains are-``` NOT NULL ,UNIQUE, PRIMARY KEY,FOREIGN KEY ,CHECK```
+creating composite primary key
+```
+CREATE TABLE student(
+  id INT(100),
+  name char(50) NOT NULL,
+phone INT UNIQUE,
+email VARCHAR(100) UNIQUE NOT NULL, //using multip[le constrain
+PRIMARY KEY(id, email) // creating composite PK
+):
+```
+
+**uses of ALTER KEY
+
+i)rename a table 
+``` ALTER TABLE department RENAME TO DEPT;```
+ii)ADD a COLUMN
+``` ALTER TABLE tab_name ADD COLUMN col_name constrain;```
+
+iii)DROP COLUMN
+iv)RENAME COLUMN
+
+
