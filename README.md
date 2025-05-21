@@ -81,10 +81,17 @@ PRIMARY KEY(id, email) // creating composite PK
 
 i)rename a table 
 ``` ALTER TABLE department RENAME TO DEPT;```
+
 ii)ADD a COLUMN
 ``` ALTER TABLE tab_name ADD COLUMN col_name constrain;```
 
 iii)DROP COLUMN
+```ALTER TABLE tab_name DROP COLUMN col_name;```
+
 iv)RENAME COLUMN
+```ALTER TABLE tab_name RENAME COLUMN col_name to update_name;```
+
+v)Constrain Change
+```ALTER TABLE tab_name ALTER COLUMN col_name TYPE constrain;```
 
 
