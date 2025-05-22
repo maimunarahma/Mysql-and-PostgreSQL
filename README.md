@@ -150,5 +150,22 @@ vi)WHERE ,AND,OR
 
   ```SELECT * FROM students WHERE email IS NOT NULL;   //returns all columns where email is not null```
 
+###
+
+### IN ,BETWEEN ,LIKE operator
+if we want to filter all datas of students location.
+```SELECT * from student WHERE home='dhaka' OR home='JASHORE' OR home='khulna'; ```
+
+```SELECT  * from student WHERE home IN('dhaka','JASHORE','khulna');```
+both mean same thing.
+
+```SELECT  * from student WHERE home NOT IN('dhaka','JASHORE','khulna');```
+using NOT operator we can get opposite values
+
+**BETWEEN
+
+```SELECT * from student WHERE age 20 and 25;```
+outputs all datas filtering age columns value 20-25
 
 
+### LIMIT
