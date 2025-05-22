@@ -93,6 +93,9 @@ iv)RENAME COLUMN
 
 v)Constrain Change
 ```ALTER TABLE tab_name ALTER COLUMN col_name TYPE constrain;```
+
+
+
 ***USES of SELECT Queries
 i) to show all columns of a table without data
 ``` SELECT FROM tab-name;```
