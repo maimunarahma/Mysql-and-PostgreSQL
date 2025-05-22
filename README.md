@@ -119,4 +119,36 @@ iv)filter using SELECT query
 vi)WHERE ,AND,OR 
 
 
+## 📚 Scalar Function vs Agregate Function
+ Scalar function: operates on each vales of the corresponding column and return value for each of the column.
+ ```SELECT concat(first_name,' '.last_name) from students;```
+
+ ```SELECT length(first_name) from students;```
+
+ Agregate Function: operates on whole column values and retruns a single value;  
+
+ ```SELECT avg(age) from students;```
+ 
+ ``` SELECT coutn(*) from student;  ///retun count of rows ,number of data containing the table```
+
+ ```SELECT max(mark) from student;```
+
+ ``` SELECT min(age) from student;``` 
+
+ ``` SELECT sum(age) from student;```
+
+ ## Understanding NULL
+ If we wanna filter null values of a column using WHERE operator, it will return nothing.As where operator outputs only when the conditional expression is either true or false.
+ Suppose inb my student table ,I have email column which can be null or not null .
+ so if we run this command like 
+
+ ```SELECT * from students WHERE email=NULL;``` 
+ it will true for some row and false for some row. so this expressin is wrong.Instead this, in case of NULL we need to use IS or IS NOT.
+ such as:
+
+ ```SELECT * FROM students WHERE email IS NULL; //returns all columns where email is null```
+
+  ```SELECT * FROM students WHERE email IS NOT NULL;   //returns all columns where email is not null```
+
+
 
