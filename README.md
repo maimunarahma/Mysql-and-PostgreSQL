@@ -97,19 +97,25 @@ v)Constrain Change
 
 
 ***USES of SELECT Queries
+
 i) to show all columns of a table without data
 ``` SELECT FROM tab-name;```
+
 ii) show all columns of table with data
 ``` SELECT * FROM tab_name;```
+
 iii) show specific columns
 ```SELECT col1_name, col2_name FROM tab_name;```
 ```SELECT col1_name as custom_name FROM tab_name; //visualize a column with a customize name```
+
 iv)filter using SELECT query
  ```ORDER BY col_name ASC ```
  ```ORDER BY col_name DESC```
  ```SELECT * FROM department ORDER BY students ASC; //show all datta of department table with ascending order of students column```
+ 
  v) DISTINCT
  ``` SELECT DISTINCT location from student //show all distinct values of location column in student table```
+ 
 vi)WHERE ,AND,OR 
 
 
