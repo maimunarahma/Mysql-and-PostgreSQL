@@ -168,4 +168,12 @@ using NOT operator we can get opposite values
 outputs all datas filtering age columns value 20-25
 
 
-### LIMIT
+### LIMIT and OFFSET
+Limit operator indicate how many datas will output. 
+and offset indicate from nth value's data ,,indicate the initial datas position
+```SELECT  * from student```
+```WHERE home IN('dhaka','JASHORE','khulna') LIMIT 5 OFFSET 3;  //(3+1)th data theke prothom 5 ta data dekhabe ei condition satisfy kore```
+
+these two operator handles pagination 
+### DELETE , UPDATE
+```UPDATE student set email='default@gmail.com' where email is NULL;```
