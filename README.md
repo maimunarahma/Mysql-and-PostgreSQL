@@ -177,3 +177,66 @@ and offset indicate from nth value's data ,,indicate the initial datas position
 these two operator handles pagination 
 ### DELETE , UPDATE
 ```UPDATE student set email='default@gmail.com' where email is NULL;```
+### Constructing Relationship with Foreign Key
+Lets having two table .user with attributes id,name and post with attribute id,post,user_id.post tables user_id attribute is a foreign key of user table.
+so there might be co-relation between user tables id and post tables user_id.the id not exists in user table can't reference in post table.To ensure this validity REFERENCES key is used.
+
+```
+ create table user(
+    id SERIAL PRIMARY KEY,
+    name char(20)
+ );
+
+```CREATE TABLE post(
+  id serial PRIMARY KEY,
+   post TEXT,
+   user_id INTEGER REFERENCES user(id)
+);
+```
+### Enforcing Referential Integrity: Behaviors During Data Deletion
+when user tables one data is deleted ,its corresponding post data can be handled.
+3 ways
+i) Restriction Deletion : on delete no action happen (default)
+ii)Casecading Deletion : means all data of corresponding post table will also deleted ```ON DELETE CASCADE``` : 
+
+```
+```CREATE TABLE post(
+  id serial PRIMARY KEY,
+   post TEXT,
+   user_id INTEGER REFERENCES user(id) ON DELETE CASCADE
+);
+```
+lets say  ```DELETE user WHERE id=1;```
+also delete all data of user_id=1 in post table 
+
+iii)Setting Null: On delete corresponding value set null ```ON DELETE SET NULL```
+
+```
+```CREATE TABLE post(
+  id serial PRIMARY KEY,
+   post TEXT,
+   user_id INTEGER REFERENCES user(id) ON DELETE SET NULL
+);
+```
+lets say  ```DELETE user WHERE id=1;```
+make user_id=NULL and all data remain as it is of user_id=1 in post table 
+
+
+
+iv) setting default:  On delete corresponding value set default ```ON DELETE SET DEFAULT```
+
+
+```
+```CREATE TABLE post(
+  id serial PRIMARY KEY,
+   post TEXT,
+   user_id INTEGER REFERENCES user(id) ON DELETE SET DEFAULT 2;
+);
+```
+lets say  ```DELETE user WHERE id=1;```
+make user_id=2 and all data remain as it is of user_id=1 in post table 
+
+### JOIN
+```select name,post from post JOIN user on user.id=post.user_id;```
+
+
