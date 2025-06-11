@@ -167,6 +167,29 @@ ALTER	Structure or definition of columns (schema)
 | **Change column order**    | `ALTER TABLE table_name MODIFY COLUMN col_name datatype AFTER other_col;` | Not supported                                             | MySQL supports, PG does not                       |
 
 
+### UPDATE commands of sql and postgresql 
+
+### 📝 UPDATE Command Comparison: MySQL vs PostgreSQL
+
+| Operation                          | MySQL Syntax Example                                               | PostgreSQL Syntax Example                                            | Notes & Differences                                               |
+|-----------------------------------|---------------------------------------------------------------------|----------------------------------------------------------------------|-------------------------------------------------------------------|
+| **Update one column (all rows)**   | `UPDATE users SET age = 30;`                                        | `UPDATE users SET age = 30;`                                         | Identical syntax                                                  |
+| **Update multiple columns**        | `UPDATE users SET age = 30, name = 'Rahim';`                        | `UPDATE users SET age = 30, name = 'Rahim';`                         | Identical syntax                                                  |
+| **Update specific rows (with WHERE)** | `UPDATE users SET age = 30 WHERE id = 1;`                          | `UPDATE users SET age = 30 WHERE id = 1;`                            | Identical syntax                                                  |
+| **Use expressions in update**      | `UPDATE users SET age = age + 1;`                                   | `UPDATE users SET age = age + 1;`                                    | Same behavior                                                     |
+| **Update with JOIN**               | ```sql                                                              |
+|                                   | UPDATE users                                                       |
+|                                   | JOIN countries ON users.country_id = countries.id                  |
+|                                   | SET users.country_name = countries.name;                           | ```sql                                                              |
+|                                   | UPDATE users                                                       |
+|                                   | SET country_name = c.name                                          |
+|                                   | FROM countries c                                                   |
+|                                   | WHERE users.country_id = c.id;                                     | PostgreSQL uses `FROM`, MySQL uses `JOIN` inside UPDATE             |
+| **Update using subquery**          | `UPDATE users SET age = (SELECT MAX(age) FROM users);`              | Same as MySQL                                                       | Supported in both                                                 |
+| **Update with LIMIT**              | `UPDATE users SET age = 30 LIMIT 10;`                               | Not supported directly                                               | Use CTE with `LIMIT` in PostgreSQL                                |
+| **Update with ORDER BY + LIMIT**   | `UPDATE users SET age = 30 ORDER BY id DESC LIMIT 1;`               | Use CTE:<br>`WITH cte AS (SELECT id FROM users ORDER BY id DESC LIMIT 1) UPDATE users SET age = 30 WHERE id IN (SELECT id FROM cte);` | MySQL supports ORDER + LIMIT directly                             |
+| **RETURNING clause**              | ❌ Not supported                                                     | `UPDATE users SET age = 30 RETURNING *;`                             | PostgreSQL supports `RETURNING` for fetching updated rows         |
+
 
 
 ## 📚 Scalar Function vs Agregate Function
