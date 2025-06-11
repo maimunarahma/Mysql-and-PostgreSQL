@@ -123,7 +123,9 @@ Only changes data inside table rows (the values).
 You can update one or multiple columns’ values for one or many rows.
 
 Does NOT change table structure.
-###ALTER
+
+
+### ALTER
 Changes the table structure (schema).
 
 Can add, remove, rename columns, or change properties of existing columns like:
@@ -137,6 +139,13 @@ Default values
 Nullability (allow or disallow NULL)
 
 Does NOT change the actual data values inside rows (except when changing data type might cause implicit conversions).
+
+
+
+### Command	What it changes
+UPDATE	Data inside existing columns
+ALTER	Structure or definition of columns (schema)
+
 
 
 ## 📚 Scalar Function vs Agregate Function
