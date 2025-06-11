@@ -144,7 +144,28 @@ Does NOT change the actual data values inside rows (except when changing data ty
 
 ### Command	What it changes
 UPDATE	Data inside existing columns
+
 ALTER	Structure or definition of columns (schema)
+
+### All ALTER command of mysql and postgresql 
+
+| Operation                 | MySQL Syntax Example                                          | PostgreSQL Syntax Example                                   | Notes & Differences                                |
+|---------------------------|---------------------------------------------------------------|------------------------------------------------------------|---------------------------------------------------|
+| **Add column**             | `ALTER TABLE table_name ADD COLUMN col_name datatype;`        | `ALTER TABLE table_name ADD COLUMN col_name datatype;`     | Same syntax                                      |
+| **Drop column**            | `ALTER TABLE table_name DROP COLUMN col_name;`                | `ALTER TABLE table_name DROP COLUMN col_name;`             | Same syntax                                      |
+| **Rename table**           | `RENAME TABLE old_name TO new_name;`                          | `ALTER TABLE old_name RENAME TO new_name;`                  | PostgreSQL uses ALTER TABLE                        |
+| **Rename column**          | `ALTER TABLE table_name CHANGE COLUMN old_name new_name datatype;` | `ALTER TABLE table_name RENAME COLUMN old_name TO new_name;` | MySQL requires datatype with rename               |
+| **Modify/change column type** | `ALTER TABLE table_name MODIFY COLUMN col_name new_datatype;` | `ALTER TABLE table_name ALTER COLUMN col_name TYPE new_datatype;` | Syntax differs                                    |
+| **Set default value**      | `ALTER TABLE table_name ALTER COLUMN col_name SET DEFAULT value;` | `ALTER TABLE table_name ALTER COLUMN col_name SET DEFAULT value;` | Same syntax                                      |
+| **Drop default value**     | `ALTER TABLE table_name ALTER COLUMN col_name DROP DEFAULT;`  | `ALTER TABLE table_name ALTER COLUMN col_name DROP DEFAULT;` | Same syntax                                      |
+| **Add primary key**        | `ALTER TABLE table_name ADD PRIMARY KEY (col_name);`          | `ALTER TABLE table_name ADD PRIMARY KEY (col_name);`       | Same syntax                                      |
+| **Drop primary key**       | `ALTER TABLE table_name DROP PRIMARY KEY;`                     | `ALTER TABLE table_name DROP CONSTRAINT constraint_name;`  | PG requires constraint name                       |
+| **Add foreign key**        | `ALTER TABLE table_name ADD CONSTRAINT fk_name FOREIGN KEY (col) REFERENCES ref_table(ref_col);` | Same as MySQL                                     | Same syntax                                      |
+| **Drop foreign key**       | `ALTER TABLE table_name DROP FOREIGN KEY fk_name;`             | `ALTER TABLE table_name DROP CONSTRAINT fk_name;`          | PG drops constraint by name                       |
+| **Change column nullability** | `ALTER TABLE table_name MODIFY COLUMN col_name datatype [NOT NULL | NULL];` | `ALTER TABLE table_name ALTER COLUMN col_name SET NOT NULL;` <br>or <br> `ALTER TABLE table_name ALTER COLUMN col_name DROP NOT NULL;` | Syntax differs                                    |
+| **Change column comment**  | `ALTER TABLE table_name MODIFY COLUMN col_name datatype COMMENT 'comment';` | `COMMENT ON COLUMN table_name.col_name IS 'comment';`      | Syntax very different                             |
+| **Change column order**    | `ALTER TABLE table_name MODIFY COLUMN col_name datatype AFTER other_col;` | Not supported                                             | MySQL supports, PG does not                       |
+
 
 
 
