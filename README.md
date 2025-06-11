@@ -117,6 +117,26 @@ iv)filter using SELECT query
  ``` SELECT DISTINCT location from student //show all distinct values of location column in student table```
  
 vi)WHERE ,AND,OR 
+### UPDATE
+Only changes data inside table rows (the values).
+
+You can update one or multiple columns’ values for one or many rows.
+
+Does NOT change table structure.
+###ALTER
+Changes the table structure (schema).
+
+Can add, remove, rename columns, or change properties of existing columns like:
+
+Data type
+
+Constraints (e.g., primary key, foreign key, unique)
+
+Default values
+
+Nullability (allow or disallow NULL)
+
+Does NOT change the actual data values inside rows (except when changing data type might cause implicit conversions).
 
 
 ## 📚 Scalar Function vs Agregate Function
